@@ -38,7 +38,7 @@ public class RNABPushNotificationHelper {
     private static final int ONE_MINUTE = 60 * 1000;
     private static final long ONE_HOUR = 60 * ONE_MINUTE;
     private static final long ONE_DAY = 24 * ONE_HOUR;
-    private static final String LOG_TAG = "RNPushNotificationHelper";
+    private static final String LOG_TAG = "RNABHelper";
     private static final String NOTIFICATION_OPENED = "com.amazonaws.amplify.pushnotification.NOTIFICATION_OPENED";
 
     public RNABPushNotificationHelper(Application context) {

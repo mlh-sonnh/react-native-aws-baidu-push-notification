@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.IntentFilter;
 import android.util.Log;
 
+import com.baidu.android.pushservice.PushConstants;
+import com.baidu.android.pushservice.PushManager;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
@@ -28,7 +30,7 @@ public class AwsBaiduPushNotificationModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void initialize() {
+    public void initialize(String apiKey) {
         ReactApplicationContext context = getReactApplicationContext();
         Log.i(LOG_TAG, "initializing RNPushNotificationModule");
         if (!this.receiverRegistered) {
@@ -38,6 +40,8 @@ public class AwsBaiduPushNotificationModule extends ReactContextBaseJavaModule {
             RNABPushNotificationBroadcastReceiver receiver = new RNABPushNotificationBroadcastReceiver();
             IntentFilter intentFilter = new IntentFilter("com.amazonaws.amplify.pushnotification.NOTIFICATION_OPENED");
             applicationContext.registerReceiver(receiver, intentFilter);
+            PushManager.startWork(getReactApplicationContext(), PushConstants.LOGIN_TYPE_API_KEY,
+                    apiKey);
         }
     }
 
