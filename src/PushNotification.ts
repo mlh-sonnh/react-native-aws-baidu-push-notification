@@ -6,7 +6,7 @@ import {
 import AsyncStorage from '@react-native-community/async-storage';
 import Amplify, { ConsoleLogger as Logger } from '@aws-amplify/core';
 
-const AwsBaiduPushNotifications = NativeModules.AwsBaiduPushNotifications;
+const AwsBaiduPushNotification = NativeModules.AwsBaiduPushNotification;
 const REMOTE_NOTIFICATION_RECEIVED = 'remoteNotificationReceived';
 const REMOTE_TOKEN_RECEIVED = 'remoteTokenReceived';
 const REMOTE_NOTIFICATION_OPENED = 'remoteNotificationOpened';
@@ -48,6 +48,8 @@ export default class PushNotifications {
             };
         }
 
+        console.log(conf, config);
+
         this._config = Object.assign(
             this._config,
             conf
@@ -61,6 +63,7 @@ export default class PushNotifications {
 
     onRegister(handler) {
 		if (typeof handler === 'function') {
+            console.log('vao day')
             this.addEventListenerForAndroid(REMOTE_TOKEN_RECEIVED, handler);
 		}
 	}
@@ -76,7 +79,8 @@ export default class PushNotifications {
             this.handleCampaignPush
         );
         const { apiKey } = this._config;
-        AwsBaiduPushNotifications.initialize(apiKey);
+        console.log('ab', this._config, apiKey);
+        AwsBaiduPushNotification.initialize(this._config.apiKey);
 
         // check if the token is cached properly
         // if (!(await this._registerTokenCached())) {
@@ -102,15 +106,16 @@ export default class PushNotifications {
     
     addEventListenerForAndroid(event, handler) {
         const that = this;
+        console.log(event, handler);
         const listener = DeviceEventEmitter.addListener(event, data => {
             // for on notification
+            console.log(event, data);
             if (event === REMOTE_NOTIFICATION_RECEIVED) {
                 handler(that.parseMessagefromAndroid(data));
                 return;
             }
             if (event === REMOTE_TOKEN_RECEIVED) {
-                const dataObj = data.dataJSON ? JSON.parse(data.dataJSON) : {};
-                handler(dataObj.refreshToken);
+                handler(data);
                 return;
             }
             if (event === REMOTE_NOTIFICATION_OPENED) {
@@ -118,6 +123,7 @@ export default class PushNotifications {
                 return;
             }
         });
+        console.log(listener);
     }
     
     updateEndpoint(token) {
@@ -137,24 +143,24 @@ export default class PushNotifications {
                         Address: token,
                         OptOut: 'NONE',
                     };
-                    if (
-                        Amplify.Analytics &&
-                        typeof Amplify.Analytics.updateEndpoint === 'function'
-                    ) {
-                        Amplify.Analytics.updateEndpoint(config)
-                            .then(data => {
-                                logger.debug(
-                                    'update endpoint success, setting token into cache'
-                                );
-                                AsyncStorage.setItem(cacheKey, token);
-                            })
-                            .catch(e => {
-                                // ........
-                                logger.debug('update endpoint failed', e);
-                            });
-                    } else {
-                        logger.debug('Analytics module is not registered into Amplify');
-                    }
+                    // if (
+                    //     Amplify.Analytics &&
+                    //     typeof Amplify.Analytics.updateEndpoint === 'function'
+                    // ) {
+                    //     Amplify.Analytics.updateEndpoint(config)
+                    //         .then(data => {
+                    //             logger.debug(
+                    //                 'update endpoint success, setting token into cache'
+                    //             );
+                    //             AsyncStorage.setItem(cacheKey, token);
+                    //         })
+                    //         .catch(e => {
+                    //             // ........
+                    //             logger.debug('update endpoint failed', e);
+                    //         });
+                    // } else {
+                    //     logger.debug('Analytics module is not registered into Amplify');
+                    // }
                 }
             })
             .catch(e => {
@@ -218,15 +224,15 @@ export default class PushNotifications {
 
         const eventType = '_campaign.opened_notification';
 
-        if (Amplify.Analytics && typeof Amplify.Analytics.record === 'function') {
-            Amplify.Analytics.record({
-                name: eventType,
-                attributes,
-                immediate: true,
-            });
-        } else {
-            logger.debug('Analytics module is not registered into Amplify');
-        }
+        // if (Amplify.Analytics && typeof Amplify.Analytics.record === 'function') {
+        //     Amplify.Analytics.record({
+        //         name: eventType,
+        //         attributes,
+        //         immediate: true,
+        //     });
+        // } else {
+        //     logger.debug('Analytics module is not registered into Amplify');
+        // }
     }
 
     handleCampaignPush(rawMessage) {
@@ -255,14 +261,14 @@ export default class PushNotifications {
 			? '_campaign.received_foreground'
 			: '_campaign.received_background';
 
-		if (Amplify.Analytics && typeof Amplify.Analytics.record === 'function') {
-			Amplify.Analytics.record({
-				name: eventType,
-				attributes,
-				immediate: true,
-			});
-		} else {
-			logger.debug('Analytics module is not registered into Amplify');
-		}
+		// if (Amplify.Analytics && typeof Amplify.Analytics.record === 'function') {
+		// 	Amplify.Analytics.record({
+		// 		name: eventType,
+		// 		attributes,
+		// 		immediate: true,
+		// 	});
+		// } else {
+		// 	logger.debug('Analytics module is not registered into Amplify');
+		// }
 	}
 }

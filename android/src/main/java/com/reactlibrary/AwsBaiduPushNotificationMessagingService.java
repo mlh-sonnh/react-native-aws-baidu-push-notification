@@ -77,7 +77,6 @@ public class AwsBaiduPushNotificationMessagingService extends PushMessageReceive
     public void onBind(Context context, int errorCode, String appid, String userId, final String channelId,
                        String requestId) {
         Log.d(LOG_TAG, "onBind");
-        Log.d(LOG_TAG, "onBind");
         Log.e("userId", userId);
         Log.e("channelId", channelId);
         getPinpointManager(context);
@@ -90,9 +89,9 @@ public class AwsBaiduPushNotificationMessagingService extends PushMessageReceive
             @Override
             public void contextInitialized(ReactApplicationContext context) {
                 WritableMap params = Arguments.createMap();
-                params.putString("deviceToken", duypx);
+                params.putString("token", duypx);
                 RNABPushNotificationJsDelivery jsDelivery = new RNABPushNotificationJsDelivery(context);
-                jsDelivery.sendEvent("remoteNotificationsRegistered", params);
+                jsDelivery.sendEvent("remoteTokenReceived", params);
             }
         });
     }
