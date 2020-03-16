@@ -94,7 +94,7 @@ public class AwsBaiduPushNotificationMessagingService extends PushMessageReceive
                 .message(message)
                 .intentAction(NotificationClient.BAIDU_INTENT_ACTION)
                 .build();
-
+        getPinpointManager(context);
         pinpointManager.getNotificationClient().handleCampaignPush(details);
 
         final Boolean isForeground = isApplicationInForeground(context);
