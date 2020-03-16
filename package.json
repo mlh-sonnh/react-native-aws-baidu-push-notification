@@ -3,7 +3,7 @@
   "title": "React Native Aws Baidu Push Notification",
   "version": "1.0.0",
   "description": "push notification through aws baidu channel",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
