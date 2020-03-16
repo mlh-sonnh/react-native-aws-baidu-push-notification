@@ -15,7 +15,7 @@ public class RNABPushNotificationJsDelivery {
         context = reactContext;
     }
 
-    public void emitNotificationReceived(Bundle bundle) {
+    public void emitNotificationReceived(Bundle bundle, Boolean isForeground) {
         String bundleString = RNABPushNotificationCommon.convertJSON(bundle);
 
         WritableMap params = Arguments.createMap();

@@ -2,22 +2,22 @@
   "name": "react-native-aws-baidu-push-notification",
   "title": "React Native Aws Baidu Push Notification",
   "version": "1.0.0",
-  "description": "TODO",
+  "description": "push notification through aws baidu channel",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/github_account/react-native-aws-baidu-push-notification.git",
-    "baseUrl": "https://github.com/github_account/react-native-aws-baidu-push-notification"
+    "url": "git+https://github.com/mlh-sonnh/react-native-aws-baidu-push-notification.git",
+    "baseUrl": "https://github.com/mlh-sonnh/react-native-aws-baidu-push-notification"
   },
   "keywords": [
     "react-native"
   ],
   "author": {
-    "name": "Your Name",
-    "email": "yourname@email.com"
+    "name": "Nguyen Hoang Son",
+    "email": "sonnh@lifetimetech.vn"
   },
   "license": "MIT",
   "licenseFilename": "LICENSE",
@@ -29,9 +29,5 @@
   "devDependencies": {
     "react": "^16.9.0",
     "react-native": "^0.61.5"
-  },
-  "dependencies": {
-    "@aws-amplify/core": "^2.2.5",
-    "@react-native-community/async-storage": "^1.8.1"
   }
 }

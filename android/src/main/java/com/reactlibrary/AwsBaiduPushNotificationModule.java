@@ -6,11 +6,9 @@ import android.util.Log;
 
 import com.baidu.android.pushservice.PushConstants;
 import com.baidu.android.pushservice.PushManager;
-import com.baidu.android.pushservice.e;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-import com.facebook.react.bridge.Callback;
 import com.reactlibrary.modules.RNABPushNotificationBroadcastReceiver;
 
 public class AwsBaiduPushNotificationModule extends ReactContextBaseJavaModule {
@@ -41,8 +39,6 @@ public class AwsBaiduPushNotificationModule extends ReactContextBaseJavaModule {
             RNABPushNotificationBroadcastReceiver receiver = new RNABPushNotificationBroadcastReceiver();
             IntentFilter intentFilter = new IntentFilter("com.amazonaws.amplify.pushnotification.NOTIFICATION_OPENED");
             applicationContext.registerReceiver(receiver, intentFilter);
-            final boolean lol = e.k(context);
-            Log.e("a", Boolean.toString(lol));
             PushManager.startWork(this.reactContext, PushConstants.LOGIN_TYPE_API_KEY,
                     apiKey);
         }

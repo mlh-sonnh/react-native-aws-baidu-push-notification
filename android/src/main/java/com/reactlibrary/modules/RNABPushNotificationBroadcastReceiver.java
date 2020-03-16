@@ -1,12 +1,8 @@
 package com.reactlibrary.modules;
 
-import java.util.HashMap;
-import java.util.Map;
 import android.content.BroadcastReceiver;
-import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.util.Log;
 
 import com.facebook.react.ReactApplication;
@@ -14,7 +10,6 @@ import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContext;
 
-import com.reactlibrary.modules.RNABPushNotificationJsDelivery;
 
 public class RNABPushNotificationBroadcastReceiver extends BroadcastReceiver {
     private final static String LOG_TAG = "RNABBroadcastReceiver";
