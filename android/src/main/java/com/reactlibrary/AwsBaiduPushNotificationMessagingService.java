@@ -73,14 +73,14 @@ public class AwsBaiduPushNotificationMessagingService extends PushMessageReceive
         getPinpointManager(context);
         pinpointManager.getNotificationClient().registerDeviceToken(userId, channelId);
 
-        final String duypx = pinpointManager.getNotificationClient().getDeviceToken();
+        final String deviceToken = pinpointManager.getNotificationClient().getDeviceToken();
 
         Context applicationContext = context.getApplicationContext();
         handleEvent(applicationContext, new ReactContextInitListener() {
             @Override
             public void contextInitialized(ReactApplicationContext context) {
                 WritableMap params = Arguments.createMap();
-                params.putString("token", duypx);
+                params.putString("token", deviceToken);
                 RNABPushNotificationJsDelivery jsDelivery = new RNABPushNotificationJsDelivery(context);
                 jsDelivery.sendEvent("remoteTokenReceived", params);
             }
