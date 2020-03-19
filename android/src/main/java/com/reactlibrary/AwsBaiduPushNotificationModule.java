@@ -1,15 +1,10 @@
 package com.reactlibrary;
 
-import android.app.Application;
-import android.content.IntentFilter;
 import android.util.Log;
 
-import com.baidu.android.pushservice.PushConstants;
-import com.baidu.android.pushservice.PushManager;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-import com.reactlibrary.modules.RNABPushNotificationBroadcastReceiver;
 
 public class AwsBaiduPushNotificationModule extends ReactContextBaseJavaModule {
 

@@ -21,7 +21,7 @@ public class RNABPushNotificationJsDelivery {
         WritableMap params = Arguments.createMap();
         params.putString("dataJSON", bundleString);
         Log.i("emit", "notification emit");
-        sendEvent("remoteNotificationReceived", params);
+        sendEvent("remoteNotificationReceivedBaidu", params);
     }
 
     public void emitTokenReceived(Bundle bundle) {
@@ -30,7 +30,7 @@ public class RNABPushNotificationJsDelivery {
         WritableMap params = Arguments.createMap();
         params.putString("dataJSON", bundleString);
         Log.i("emit", "token registration");
-        sendEvent("remoteTokenReceived", params);
+        sendEvent("remoteTokenReceivedBaidu", params);
     }
 
     public void emitNotificationOpened(Bundle bundle) {
@@ -40,7 +40,7 @@ public class RNABPushNotificationJsDelivery {
         params.putString("dataJSON", bundleString);
 
         Log.i("emit", "notification opened: " + bundle);
-        sendEvent("remoteNotificationOpened", params);
+        sendEvent("remoteNotificationOpenedBaidu", params);
     }
 
     public void sendEvent(String eventName, Object params) {

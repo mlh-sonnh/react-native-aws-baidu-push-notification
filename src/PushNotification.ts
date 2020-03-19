@@ -4,9 +4,9 @@ import {
 } from 'react-native';
 
 const AwsBaiduPushNotification = NativeModules.AwsBaiduPushNotification;
-const REMOTE_NOTIFICATION_RECEIVED = 'remoteNotificationReceived';
-const REMOTE_TOKEN_RECEIVED = 'remoteTokenReceived';
-const REMOTE_NOTIFICATION_OPENED = 'remoteNotificationOpened';
+const REMOTE_NOTIFICATION_RECEIVED = 'remoteNotificationReceivedBaidu';
+const REMOTE_TOKEN_RECEIVED = 'remoteTokenReceivedBaidu';
+const REMOTE_NOTIFICATION_OPENED = 'remoteNotificationOpenedBaidu';
 
 export default class PushNotifications {
     private _config;
