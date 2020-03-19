@@ -35,12 +35,12 @@ public class AwsBaiduPushNotificationModule extends ReactContextBaseJavaModule {
         if (!this.receiverRegistered) {
             this.receiverRegistered = true;
             Log.i(LOG_TAG, "registering receiver");
-            Application applicationContext = (Application) context.getApplicationContext();
-            RNABPushNotificationBroadcastReceiver receiver = new RNABPushNotificationBroadcastReceiver();
-            IntentFilter intentFilter = new IntentFilter("com.amazonaws.amplify.pushnotification.NOTIFICATION_OPENED");
-            applicationContext.registerReceiver(receiver, intentFilter);
-            PushManager.startWork(this.reactContext, PushConstants.LOGIN_TYPE_API_KEY,
-                    apiKey);
+            // Application applicationContext = (Application) context.getApplicationContext();
+            // RNABPushNotificationBroadcastReceiver receiver = new RNABPushNotificationBroadcastReceiver();
+            // IntentFilter intentFilter = new IntentFilter("com.amazonaws.amplify.pushnotification.NOTIFICATION_OPENED");
+            // applicationContext.registerReceiver(receiver, intentFilter);
+            // PushManager.startWork(this.reactContext, PushConstants.LOGIN_TYPE_API_KEY,
+            //         apiKey);
         }
     }
 

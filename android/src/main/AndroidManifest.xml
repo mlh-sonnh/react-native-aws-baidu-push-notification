@@ -29,27 +29,27 @@
     <application
         android:label="@string/app_name">
 
-        <activity
-            android:name="com.baidu.android.pushservice.richmedia.MediaViewActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="MediaViewActivity"></activity>
-        <activity
-            android:name="com.baidu.android.pushservice.richmedia.MediaListActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="MediaListActivity"
-            android:launchMode="singleTask"></activity>
+<!--        <activity-->
+<!--            android:name="com.baidu.android.pushservice.richmedia.MediaViewActivity"-->
+<!--            android:configChanges="orientation|keyboardHidden"-->
+<!--            android:label="MediaViewActivity"></activity>-->
+<!--        <activity-->
+<!--            android:name="com.baidu.android.pushservice.richmedia.MediaListActivity"-->
+<!--            android:configChanges="orientation|keyboardHidden"-->
+<!--            android:label="MediaListActivity"-->
+<!--            android:launchMode="singleTask"></activity>-->
 
         <!-- handler baidu push notification -->
-        <receiver android:name="com.reactlibrary.AwsBaiduPushNotificationMessagingService">
+        <!-- <receiver android:name="com.reactlibrary.AwsBaiduPushNotificationMessagingService">
             <intent-filter>
                 <action android:name="com.baidu.android.pushservice.action.MESSAGE" />
                 <action android:name="com.baidu.android.pushservice.action.RECEIVE" />
                 <action android:name="com.baidu.android.pushservice.action.notification.CLICK" />
             </intent-filter>
-        </receiver>
+        </receiver> -->
 
         <!-- for scheduleNotification -->
-        <receiver android:name="com.reactlibrary.modules.RNABPushNotificationPublisher" />
+        <!-- <receiver android:name="com.reactlibrary.modules.RNABPushNotificationPublisher" /> -->
 <!--        <receiver android:name="com.alones.reactnative.baidupush.modules.RNPushNotificationBootEventReceiver">-->
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.BOOT_COMPLETED" />-->
@@ -57,7 +57,7 @@
 <!--        </receiver>-->
 
         <!-- push receiver service -->
-        <receiver
+        <!-- <receiver
             android:name="com.baidu.android.pushservice.PushServiceReceiver"
             android:process=":bdservice_v1">
             <intent-filter>
@@ -94,7 +94,7 @@
         </service>
         <service
             android:name="com.baidu.android.pushservice.CommandService"
-            android:exported="true" />
+            android:exported="true" /> -->
 
         <!-- add to your manifest-->
         <!--<provider-->
@@ -105,11 +105,11 @@
         <!--android:writePermission="baidu.push.permission.WRITE_PUSHINFOPROVIDER.YOUR_PACKAGE_NAME" />-->
 
         <!-- Amazon Pinpoint Notification Receiver -->
-        <receiver android:name="com.amazonaws.mobileconnectors.pinpoint.targeting.notification.PinpointNotificationReceiver">
+        <!-- <receiver android:name="com.amazonaws.mobileconnectors.pinpoint.targeting.notification.PinpointNotificationReceiver">
             <intent-filter>
                 <action android:name="com.amazonaws.intent.baidu.NOTIFICATION_OPEN" />
             </intent-filter>
-        </receiver>
+        </receiver> -->
     </application>
 
 </manifest>

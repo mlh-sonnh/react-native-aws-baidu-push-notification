@@ -53,17 +53,14 @@ export default class PushNotifications {
     
     async initializeAndroid() {
         const { apiKey } = this._config;
-        console.log('ab', this._config, apiKey);
         AwsBaiduPushNotification.initialize(this._config.apiKey);
     }
     
     addEventListenerForAndroid(event, handler) {
         const that = this;
-        console.log(event, handler);
         const listener = DeviceEventEmitter.addListener(event, data => {
             // for on notification
             if (event === REMOTE_NOTIFICATION_RECEIVED) {
-                console.log(that.parseMessagefromAndroid(data));
                 handler(that.parseMessagefromAndroid(data));
                 return;
             }
@@ -76,7 +73,6 @@ export default class PushNotifications {
                 return;
             }
         });
-        console.log(listener);
     }
     
     parseMessagefromAndroid(message, from?) {
