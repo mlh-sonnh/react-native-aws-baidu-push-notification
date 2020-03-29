@@ -60,7 +60,7 @@ public class RNABPushNotificationJsDelivery {
         String bundleString = convertJSON(bundle);
         WritableMap params = Arguments.createMap();
         params.putString("dataJSON", bundleString);
-        sendEvent("remoteFetch", params);
+        sendEvent("remoteFetchBaidu", params);
     }
 
     public void notifyNotification(Bundle bundle) {
@@ -78,7 +78,7 @@ public class RNABPushNotificationJsDelivery {
         WritableMap params = Arguments.createMap();
         params.putString("dataJSON", bundleString);
 
-        sendEvent("notificationActionReceived", params);
+        sendEvent("notificationActionReceivedBaidu", params);
     }
 
     String convertJSON(Bundle bundle) {
